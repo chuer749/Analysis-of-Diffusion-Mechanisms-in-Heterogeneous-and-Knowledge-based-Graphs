@@ -1,0 +1,13 @@
+# 排除 Python 缓存
+__pycache__/
+*.pyc
+
+# 排除虚拟环境
+venv/
+.env
+
+# 排除临时生成的 HTML
+*.html
+
+# 如果 .pt 文件超过 100MB 且你不想用 LFS，请取消下面这行的注释
+# data/*.pt
