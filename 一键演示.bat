@@ -1,40 +1,44 @@
 @echo off
-title 零售图谱启动器
+title 零售图谱启动器-官方源版
 
 echo ======================================================
 echo       Retail Hetero-Graph System Launcher
 echo ======================================================
 echo.
 
-:: 1. Check Python
-python --version >nul 2>&1
+:: 1. 检查 Python 环境
+echo [1/3] Checking Python environment...
+python --version
 if %errorlevel% neq 0 (
-    echo [ERROR] Python not found! Please install Python 3.9+.
+    echo [ERROR] Python not found! 
     pause
     exit
 )
 
-:: 2. Install Dependencies
-echo [1/2] Checking dependencies...
-echo Please wait, this may take 1-3 minutes...
+:: 2. 使用官方源安装依赖
+echo [2/3] Installing dependencies from official PyPI...
+echo It might take a few minutes depending on connection speed.
 echo.
 
-python -m pip install --upgrade pip -q
-python -m pip install streamlit torch pyvis pandas -i https://pypi.tuna.tsinghua.edu.cn/simple -q
+:: 升级 pip
+python -m pip install --upgrade pip --user
+
+:: 安装核心库
+python -m pip install streamlit torch pyvis pandas --user
 
 if %errorlevel% neq 0 (
     echo.
-    echo [ERROR] Installation failed! Please check your network.
+    echo [ERROR] Installation failed. Please check your internet connection.
     pause
     exit
 )
 
-:: 3. Run App
+:: 3. 运行程序
 echo.
-echo [2/2] Environment ready. Starting system...
+echo [3/3] Starting system...
 echo.
 
 cd /d %~dp0
-streamlit run app.py
+python -m streamlit run app.py
 
 pause
