@@ -1,5 +1,7 @@
 @echo off
+:: 强制使用 UTF-8 编码防止乱码
 chcp 65001 > nul
+@echo off
 title 零售异质图分析系统 - 启动器
 
 echo ======================================================
@@ -20,8 +22,9 @@ echo [1/2] 正在检查依赖库 (Streamlit, Torch, Pyvis)...
 echo 提示：如果是首次运行，可能需要 1-3 分钟，请稍候...
 echo.
 
+:: 使用清华镜像源加速安装
 python -m pip install --upgrade pip -q
-python -m pip install streamlit torch pyvis pandas -q
+python -m pip install streamlit torch pyvis pandas -i https://pypi.tuna.tsinghua.edu.cn/simple -q
 
 if %errorlevel% neq 0 (
     echo.
