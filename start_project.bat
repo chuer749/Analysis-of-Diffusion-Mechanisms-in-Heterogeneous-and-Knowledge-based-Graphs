@@ -29,8 +29,8 @@ call venv\Scripts\activate
 :: ------------------------------------------
 echo Installing required libraries...
 echo This will NOT affect your global Python environment.
-python -m pip install --upgrade pip -q
-python -m pip install streamlit torch pyvis pandas -q
+python -m pip install --upgrade pip
+python -m pip install streamlit torch pyvis pandas
 
 if %errorlevel% neq 0 (
     echo [ERROR] Installation failed. Please check your internet connection.
